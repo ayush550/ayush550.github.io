@@ -1,477 +1,363 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Ayush Chauhan</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="https://kit.fontawesome.com/102eadd6de.js" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayush Chauhan | Information Security, IIT Jammu</title>
+<meta name="description" content="Portfolio of Ayush: M.Tech in Information Security (IIT Jammu), software engineer, educator, aspiring PhD researcher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+/* Applying the background theme before the page paints. Default : off-white (night mode off).*/
+(function(){
+  var t="light";
+  try{ t=localStorage.getItem("theme")||t; }catch(e){}
+  document.documentElement.setAttribute("data-theme",t);
+})();
+</script>
+<style>
+/* Night mode off = off-white. Night mode on = dark. */
+:root{--bg:#f7f6f3;--fg:#1a1a1a;--muted:#5f5f5f;--line:#dcdad5;--soft:#eeece8;color-scheme:light}
+:root[data-theme="dark"]{--bg:#121212;--fg:#eeeeee;--muted:#a0a0a0;--line:#383838;--soft:#1c1c1c;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-size:17px;line-height:1.6}
+a{color:var(--fg);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+h1,h2,h3{margin:0;line-height:1.25}
+p{margin:0 0 12px}
+
+/* ---------- Theme toggle ---------- */
+.toggle{position:absolute;top:20px;right:24px;display:flex;align-items:center;gap:10px;background:none;border:0;padding:4px;color:var(--fg);font:inherit;font-size:.9rem;cursor:pointer}
+.toggle:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:6px}
+.track{width:40px;height:22px;border:1px solid var(--fg);border-radius:11px;position:relative}
+.track::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:var(--fg);transition:transform .2s}
+.toggle[aria-checked="true"] .track::after{transform:translateX(18px)}
+@media (prefers-reduced-motion:reduce){.track::after{transition:none}}
+
+/* ---------- Header ---------- */
+header{position:relative;max-width:1280px;margin:0 auto;padding:64px 24px 28px}
+.id{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--fg)}
+.photo{width:132px;height:132px;border-radius:14px;object-fit:cover;background:var(--soft);border:1px solid var(--line)}
+.id h1{font-size:2.2rem;font-weight:700;margin-bottom:4px}
+.id .edu{color:var(--muted);margin:0 0 10px}
+.links{display:flex;gap:18px;flex-wrap:wrap}
+
+/* ---------- Layout ---------- */
+.grid{max-width:1280px;margin:0 auto;padding:8px 24px 80px;display:grid;grid-template-columns:300px minmax(0,1fr) 300px;gap:32px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:10px;padding:24px}
+.panel h2{font-size:1.2rem;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.panel h3{font-size:1rem;margin:20px 0 6px}
+.panel h2+h3,.panel p+h2{margin-top:0}
+.panel .gap{margin-top:28px}
+.panel p{font-size:.98rem}
+
+main section{margin-bottom:40px}
+main h2{font-size:1.35rem;margin-bottom:14px}
+.block{border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin-bottom:14px}
+.block h3{font-size:1.05rem;font-weight:600}
+.block .meta{color:var(--muted);font-size:.93rem;margin:2px 0 6px}
+.block p{margin:0 0 8px;font-size:.98rem}
+.block p:last-child{margin-bottom:0}
+
+/* Tags and chips */
+.tags{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.tags li{border:1px solid var(--line);border-radius:4px;padding:1px 9px;font-size:.85rem;color:var(--muted)}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{border:1px solid var(--fg);border-radius:4px;padding:2px 11px;font-size:.93rem}
+.chips a{text-decoration:none;display:block}
+.chips li:has(a):hover{background:var(--fg)}
+.chips li:has(a):hover a{color:var(--bg)}
+
+/* Credential links */
+.doc::after{content:" (verify)";color:var(--muted);font-size:.82em;white-space:nowrap}
+.chips .doc::after{content:""}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+.list li:last-child{border-bottom:0}
+.list .what{color:var(--muted);font-size:.88rem}
+
+/* Offers strip */
+.offers{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.offers a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 14px;text-decoration:none}
+.offers a:hover{border-color:var(--fg)}
+.offers strong{display:block;font-weight:600}
+.offers span{color:var(--muted);font-size:.85rem}
+.offers a.doc::after{content:""}
+
+/* Community icons */
+.social{display:flex;gap:28px;margin-top:8px}
+.social a{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;font-size:.85rem;text-align:center}
+.social svg{width:44px;height:44px;border:1px solid var(--fg);border-radius:10px;padding:9px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.social a:hover svg{background:var(--fg);stroke:var(--bg)}
+.social a.doc::after{content:""}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .grid{grid-template-columns:1fr 1fr}
+  main{grid-column:1 / -1;order:-1}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .grid{grid-template-columns:1fr}
+  .id{flex-direction:column;text-align:center}
+  .links{justify-content:center}
+  .id h1{font-size:1.8rem}
+}
+</style>
 </head>
-
 <body>
-    <header id="body-header">
-        <nav>
-            <ul class="horizontal-list text-center nav-menu">
-
-                <li>
-                    <a href="#"> Home </a>
-                </li>
-
-                <li>
-                    <a href="#about"> About </a>
-                </li>
-
-                <li>
-                    <a href="#skills"> Skills </a>
-                </li>
-
-                <li>
-                    <a href="#experience"> Experience </a>
-                </li>
-
-                <li>
-                    <a href="#education"> Education </a>
-                </li>
-
-                <li>
-                    <a href="#codingprofile"> Coding Profile </a>
-                </li>
-
-                <li>
-                    <a href="#portfolio"> Portfolio </a>
-                </li>
-
-                <li>
-                    <a href="#contact"> Contact </a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <div id="name-social-container">
-            <div class="text-center">
-                <h1 id="my-name">
-                    Ayush Chauhan
-                </h1>
-            </div>
-
-            <div>
-
-                <ul class="horizontal-list text-center social-icons">
-                    <li>
-                        <a href="https://www.linkedin.com/in/ayush-chauhan-18110817b/" target="_blank">
-                            <i class="fa-brands fa-linkedin"></i></a>
-                    </li>
-
-                    <li>
-                        <a href="https://github.com/ayush550" target="_blank">
-                            <i class="fa-brands fa-github"></i></a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.instagram.com/ayush_moonlight/" target="_blank">
-                            <i class="fa-brands fa-instagram"></i> </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-    </header>
-
-    <main>
-
-        <section id="about">
-            <div id="my-image">
-                <img src="images/my-image.JPG">
-            </div>
-            <div id="about-me">
-                <p>
-                    Hello! and Welcome!
-                </p>
-                <p>My name is <b>Ayush Chauhan</b>. I am a Master's Student at Indian Institute of Technology Jammu with
-                    major in Computer Science.
-                    I always wanted to pursue Master's and therefore I started preparing for GATE examination right
-                    after completing my Bachelors.
-                </p>
-                <p>
-                    I completed my Bachelors from Mahatama Gandhi Missions College of Engineering and Technology, Noida
-                    where I studied core computer
-                    science subjects such as - Operating Systems, DataBase Management Systems, Computer Networks,
-                    Compiler Design along with Data-Structures
-                    and Algorithms.
-                </p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h1 class="section-heading mb75px">
-                <span>
-                    <!-- <i class="fas fa-chalkboard-teacher"></i> -->
-                    <i class="fas fa-regular fa-clipboard-list"></i>
-                </span>
-                <span>SKILLS</span>
-            </h1>
-
-            <div class="skill-display">
-
-                <div class="skill-progress">
-                    <div class="eighty-five-percent mb-blue">
-                        <div class="skill-name">
-                            <span> C++ </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-progress">
-                    <div class="fifty-percent mb-teal">
-                        <div class="skill-name">
-                            <span> Python </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-progress">
-                    <div class="eighty-percent mb-orange">
-                        <div class="skill-name">
-                            <span> HTML </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-progress">
-                    <div class="seventy-percent mb-blue">
-                        <div class="skill-name">
-                            <span> CSS </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-progress">
-                    <div class="fifty-percent mb-orange">
-                        <div class="skill-name">
-                            <span> JavaScript </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-progress">
-                    <div class="seventy-percent mb-blue">
-                        <div class="skill-name">
-                            <span> Sql </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-progress">
-                    <div class="seventy-percent mb-teal">
-                        <div class="skill-name">
-                            <span> Git </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <section id="experience">
-            <h1 class="section-heading mb75px">
-                <span>
-                    <!-- <i class="fas fa-briefcase"></i> -->
-                    <i class="fas fa-duotone fa-briefcase"></i>
-                </span>
-                <span> Work Experience </span>
-            </h1>
-                
-
-            <div class="timeline">
-                <div class="timeline-box">
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/aic.png"
-                                width="40px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> Full Stack Developer </h3>
-                    <h4 class="experience-company-name"> AIC </h4>
-                    <h5 class="experience-duration m0"> July 2023 - Current </h5>
-                    <p> Working with claims reversal team on <b>SARUS</b> portal. Responsible for creating the claims reversal module.
-                    </p>
-                </div>
-
-                <div class="timeline-box">
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/nvidia_logo.png"
-                                width="40px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> System S/W Intern </h3>
-                    <h4 class="experience-company-name"> NVIDIA </h4>
-                    <h5 class="experience-duration m0"> Jan 2023 - July 2023 </h5>
-                    <p> Working with cloud-native team on <b>nvidia</b> MIG parted (mutli-instance GPU). Responsible for migrating mig-parted from bash to golang.
-                    </p>
-                </div>
-
-                <div class="timeline-box">
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/iit_jammu_logo.png" width="40px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> Teaching Assistant </h3>
-                    <h4 class="experience-company-name"> Indian Institute of Technology Jammu </h4>
-                    <h5 class="experience-duration m0"> Sep 2021 - Jan 2023 </h5>
-                    <p>
-                        Worked as Teaching Assistant with <b>Dr. Suman Banarjee</b> at IIT Jammu. Handled a class of
-                        110 students, taken SQL lab sessions, prepared assignments and helped the professor in
-                        grading.
-                    </p>
-                </div>
-
-                <div class="timeline-box">
-                    <!-- <div class="timeline-heading">
-                        <span> SQA </span>
-                    </div>
-                    <div class="timeline-heading-worklocation">
-                        <span> Samsung </span>
-                    </div>
-                    <span>Feb 2020 - Sep 2020</span> -->
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/samsung_logo.png" width="60px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> SQA </h3>
-                    <h4 class="experience-company-name"> Samsung </h4>
-                    <h5 class="experience-duration m0"> Feb 2020 - Sep 2020 </h5>
-                    <p>
-                        Worked as Software Quality Assurance Engineer with <b>Samsung R&D Noida</b> on the server portal
-                        part of Samsung Knox platform. Involved in hot-fix, Regression Testing, Bug Tracking,
-                        collaborated with overseas Developers for Bug-fixing.
-                    </p>
-                </div>
-
-                <div id="timeline-divider">
-                    <div class="timeline-traveller">
-                        <div>
-                            <i class="fas fa-plane"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="education">
-            <h1 class="section-heading mb75px">
-                <span>
-                    <i class="fas fa-graduation-cap"></i>
-                </span>
-                <span> Education </span>
-            </h1>
-
-            <div class="timeline">
-                <div class="timeline-box">
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/iit_jammu_logo.png" width="40px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> M.Tech </h3>
-                    <h4 class="experience-company-name"> Indian Institute of Technology Jammu </h4>
-                    <h5 class="experience-duration m0"> Sep 2021 - June 2023 </h5>
-                    <p> Studying in Computer Science Departing of IIT Jammu with major in Information Security.
-                        Studied security subjects - Introduction to Computer Systems, Modern cryptography, Information
-                        Security, along with Abstract algebra, Data-Structures and Probability.
-                        Involved in Training and Placement Cell - CDS IIT Jammu.
-                    </p>
-                </div>
-
-                <div class="timeline-box">
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/mgmnoida_logo.png" width="30px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> B.Tech </h3>
-                    <h4 class="experience-company-name"> Mahatama Gandhi Missions College of Engineering & Technology
-                    </h4>
-                    <h5 class="experience-duration m0"> Aug 2015 - June 2019 </h5>
-                    <p>
-                        Studied in Computer Science department of <b>MGMCOET Noida</b>, focused on major core computer
-                        science
-                        subjects including: Operating Systems, DataBase Management Systems, Computer Networks along with
-                        Data-Structures and Algorithms.
-                    </p>
-                    <p>C-Programming was my Introduction to the field of Computer Science.</p>
-                </div>
-
-                <!-- <div class="timeline-box">
-                    <div class="timeline-container">
-                        <div class="timeline-logo">
-                            <img src="images/radiant.png" width="20px">
-                        </div>
-                    </div>
-                    <h3 class="experience-designation m0 m-blue"> XII-th </h3>
-                    <h4 class="experience-company-name"> Radint Academy </h4>
-                    <h5 class="experience-duration m0"> Nov 2022 - Feb </h5>
-                    <p> Completed my Schooling from Radiat Academy Noida, was Involved in all sorts of activites be it
-                        play, sports, art & craft or any other.
-                    </p>
-                </div> -->
-
-                <div id="timeline-divider">
-                    <div class="timeline-traveller">
-                        <div>
-                            <i class="fas fa-car-side"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="codingprofile">
-            <h1 class="section-heading mb75px">
-                <span>
-                    <i class="fa-solid fa-user"></i>
-                </span>
-                <span> Coding Profile </span>
-            </h1>
-
-            <div class="coding-profiles">
-                <ul class="horizontal-list">
-                    <li>
-                        <a href="https://leetcode.com/ayush550/" target="_blank">
-                            <img src="images/leetcode.png" width="120px"></a>
-                    </li>
-
-                    <li>
-                        <a href="https://auth.geeksforgeeks.org/user/ayush550/" target="_blank">
-                            <img src="images/gfg_logo.png" width="120px"></a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.codingninjas.com/codestudio/profile/ayush550" target="_blank">
-                            <img src="images/coding_ninjas_logo.jpg" width="120px"> </a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.hackerrank.com/2021pcs2028" target="_blank">
-                            <img src="images/HackerRank_logo.png" width="120px"></a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="portfolio">
-            <h1 class="section-heading mb75px">
-                <span>
-                    <i class="fas fa-th-list"></i>
-                </span>
-                <span> Portfolio </span>
-            </h1>
-
-            <div id="portfolio-container">
-
-                <div class="portfolio-image-container">
-                    <a href="https://github.com/ayush550/weather_app-using-JavaScript" target="_blank" class="login"
-                        title="Weather"><img src="images/weather_app.png"></a>
-                    <div class="portfolio-details">
-                        <p>
-                            Weather app using JavaScript
-                        </p>
-                    </div>
-                </div>
-
-                <div class="portfolio-image-container">
-                    <a href="https://github.com/ayush550/blockchain" target="_blank" title="blockchain"> 
-                        <img src="images/blockchain.jpg"> </a>
-                    <div class="portfolio-details">
-                        <p>
-                            Blockchain development
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="contact">
-            <h1 class="section-heading mb50px">
-                <span>
-                    <i class="far fa-address-card"></i>
-                </span>
-                <span> Contact </span>
-            </h1>
-            <div id="contact-container">
-                <!-- <div id="contact-form-container">
-                    <form id="contact-form">
-                        <input id="input-name" name="name" type="text" placeholder="Your Name">
-                        <input id="input-email" name="input-email" type="text" required placeholder="Your email">
-                        <textarea name="input-message" id="input-message" cols="40" rows="2"
-                            placeholder="Message"></textarea>
-                        <button class="sub-btn" type="submit"> SEND MESSAGE </button>
-                    </form>
-                </div> -->
-
-                <div id="my-details-container">
-                    <h3>Get in touch</h3>
-                    <p>Drop an email if you want to connect with me, along with your details. I will surely
-                        get back to you in no time.
-                    </p>
-
-                    <h3> My Address </h3>
-                    <div class="my-details-info-container">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>IIT Jammu, Jammu & Kashmir</span>
-                    </div>
-                    <div class="my-details-info-container">
-                        <i class="far fa-envelope"></i>
-                        <!-- <span>2021pcs2028@iitjammu.ac.in</span> -->
-                        <span>ayushchauhan997@gmail.com</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center social-icons">
-                <ul class="horizontal-list text-center social-icons">
-                    <li>
-                        <a href="https://www.linkedin.com/in/ayush-chauhan-18110817b/" target="_blank">
-                            <i class="fa-brands fa-linkedin"></i></a>
-                    </li>
-
-<!--                     <li>
-                        <a href="https://www.quora.com/profile/Ayush-Chauhan-321" target="_blank">
-                            <i class="fa-brands fa-quora"></i></a>
-                    </li> -->
-
-                    <li>
-                        <a href="https://github.com/ayush550" target="_blank">
-                            <i class="fa-brands fa-github"></i></a>
-                    </li>
-
-                    <li>
-                        <a href="https://www.instagram.com/the_brown_bun/" target="_blank">
-                            <i class="fa-brands fa-instagram"></i> </a>
-                    </li>
-
-                    <li>
-                        <a href="mailto:ayushchauhan997@gmail.com" target="_blank">
-                            <i class="fa fa-envelope" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-    </main>
-
-    <section>
-
-    </section>
 
+<!-- ============ HEADER ============ -->
+<header>
+  <button class="toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Night mode">
+    <span>Night mode</span><span class="track" aria-hidden="true"></span>
+  </button>
+  <div class="id">
+    <!-- Put your photo in the repo as photo.jpg, or change the src -->
+    <img class="photo" src="images/photo.jpg" alt="Portrait of Ayush" onerror="this.style.visibility='hidden'">
+    <div>
+      <h1>Ayush Chauhan</h1> <!-- TODO: add your full name -->
+      <p class="edu">M.Tech, CSE - Information Security (8.43 CGPA), IIT Jammu</p>
+      <div class="links">
+        <a data-doc="linkedin" data-optional> linkedin</a>
+        <a data-doc="email" data-optional>Email</a>
+        <a data-doc="cv" data-optional>CV</a>
+        <a data-doc="github" data-optional>GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="grid">
+
+<!-- ============ LEFT: ABOUT ME ============ -->
+<aside class="panel" aria-label="About me">
+  <h2>About me</h2>
+  <p>I hold a master's degree in Information Security from IIT Jammu my master's thesis is based on <b>"blockchain e-voting architecture using Decentralised Identifiers"</b>, the main goal of this thesis is to ensure every vote is verifiable and authentic.</p>
+  <p>I have around three years of industry experience across Samsung R&amp;D, Nvidia and the Agriculture Insurance Company of India, and I enjoy turning theory into working systems.</p>
+
+  <h2 class="gap">Research interests</h2>
+  <p>AI is entering every field, and that dependence has to be checked. I want to study how AI systems, including LLM agents, can find and fix bugs automatically and compare the behaviour of different program versions so the better one can be adopted.</p>
+  <ul class="tags">
+    <li>Trustworthy AI</li><li>Adversarial ML</li><li>Program repair</li><li>Blockchain</li>
+  </ul>
+
+  <h2 class="gap">Background</h2>
+  <p>I grew up in a rural area and learned mostly by rote in my native language. My parents moved me to a convent school, where I found a love for science and mathematics and built a solar-powered water purifier for a science competition. Participated in Environmental walkathons, Debates and Art.</p>
+  <p>During my B.Tech I built a speed-monitoring app for school vans and began teaching underprivileged children in my neighbourhood. I cleared GATE and joined IIT Jammu, where I worked as a teaching assistant for Algorithms and Database Management Systems, handling classes of over 100 students.</p>
+  <p>In an adversarial machine learning course, my team fooled a pre-trained U-Net with perturbed inputs. It showed me the limits of modern AI and why trustworthy models matter.</p>
+
+  <h2 class="gap">Why a PhD</h2>
+  <p>I believe education can change circumstances. Teaching is something I enjoy and am good at, and research satisfies my curiosity. A PhD lets me refine my research skills and prepare for a long-term academic career.</p>
+</aside>
+
+<!-- ============ CENTER ============ -->
+<main>
+  <section id="work">
+    <h2>Experience and Project work</h2>
+
+    <div class="block">
+      <h3>Back-End Engineer, Agriculture Insurance Company of India</h3>
+      <p class="meta">Current role, Administrative Officer</p>
+      <p>Design and build features for PMFBY Claims - Individual Loss Assessment, Survey, Claims and report generation, and optimized the SQL query and applied parallel processing to handle millions of records. <a class="doc" data-doc="aic_offer">Offer letter</a></p>
+      <!-- Edit these tags to match your real stack -->
+      <ul class="tags"><li>Python</li><li>Django</li><li>TCP/IP</li><li>Git</li><li>CI/CD</li><li>SQL</li><li>Parallel Processing</li></ul>
+    </div>
+
+    <div class="block">
+      <h3>System Software Intern, Nvidia</h3>
+      <p>MIG partition: partitioning a single GPU into upto 7 (physical limit) instances with each instance having its own GPU core and memory. <a class="doc" data-doc="nvidia_offer">Internship letter</a></p>
+      <ul class="tags"><li>CUDA</li><li>Go-lang</li><li>bash</li><li>Git</li></ul>
+    </div>
+
+    <div class="block">
+      <h3>Blockchain based E-Voting System with Decentralised Identifiers</h3>
+      <p class="meta">M.Tech thesis, IIT Jammu</p>
+      <p>An architecture that ensures verifiability and authenticity of votes cast by voters. <a class="doc" data-doc="thesis">Thesis</a> <a class="doc" data-doc="evoting_code">Code</a></p>
+      <ul class="tags"><li>Blockchain</li><li>Decentralised Identifiers</li><li>Information security</li></ul>
+    </div>
+
+    <div class="block">
+      <h3>Adversarial attacks on a pre-trained U-Net</h3>
+      <p class="meta">Course project, adversarial machine learning</p>
+      <p>Introduced perturbed inputs to a pre-trained network and compared the results with expected output to study its limits. <a class="doc" data-doc="adversarial_report">Report</a></p>
+      <ul class="tags"><li>Neural networks</li><li>U-Net</li><li>Adversarial ML</li></ul>
+    </div>
+
+    <div class="block">
+      <h3>Software Test Engineer, Samsung R&amp;D Noida</h3>
+      <p class="meta">Samsung Knox platform</p>
+      <p>Ran monthly test sprints, verified functionality, performed root cause analysis of failures and worked with cross-regional teams. <a class="doc" data-doc="samsung_offer">Experience letter</a></p>
+      <ul class="tags"><li>Samsung Knox</li><li>Testing</li><li>Root cause analysis</li><li>JIRA</li></ul>
+    </div>
+
+    <div class="block">
+      <h3>Real-Time velocity monitoring</h3>
+      <p class="meta">B.Tech, Project</p>
+      <p>Tracks the speed of school vans/ Buses, generates alerts, reports in case of overspeeing to improve driving behaviour. <a class="doc" data-doc="velocity_code">Code</a></p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="block">
+      <h3>M.Tech, Information Security</h3>
+      <p class="meta">Department of CSE, IIT Jammu. CGPA 8.43</p>
+      <p>Encryption, secure transmission of Information, blockchain and hardware-level optimisation. <a class="doc" data-doc="mtech_marksheet">Transcript</a></p>
+    </div>
+    <div class="block">
+      <h3>B.Tech, Computer Science</h3>
+      <p class="meta">Mahatma Gandhi Mission College of Engineering and Technology. 71.24%</p>
+      <p>Operating systems, DBMS, digital electronics, algorithms and data structures, Computer Networks. <a class="doc" data-doc="btech_marksheet">Transcript</a></p>
+    </div>
+    <div class="block">
+      <h3>Class XII and Class X</h3>
+      <p class="meta">XII: 82.40%. X: CGPA 8.6</p>
+      <p><a class="doc" data-doc="class12">Class XII marksheet</a> <a class="doc" data-doc="class10">Class X marksheet</a></p>
+    </div>
+  </section>
+
+  <section id="fulltime">
+    <h2>Full-time offers cleared</h2>
+    <div class="offers">
+      <a data-doc="amazon_offer"><strong>Amazon</strong><span>SDE-I</span></a>
+      <a data-doc="qualcomm_offer"><strong>Qualcomm</strong><span>Engineer</span></a>
+      <a data-doc="samsung_offer"><strong>Samsung R&amp;D Noida</strong><span>Engineer</span></a>
+      <a data-doc="infosys_offer"><strong>Infosys</strong><span>Systems Engineer</span></a>
+      <a data-doc="bt_offer"><strong>British Telecom</strong><span>Verify offer</span></a>
+      <a data-doc="vodafone_offer"><strong>Vodafone</strong><span>Verify offer</span></a>
+      <a data-doc="ntt_offer"><strong>NTT Data</strong><span>Verify offer</span></a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ RIGHT: ACHIEVEMENTS ============ -->
+<aside class="panel" aria-label="Learning, exams and offers">
+  <h2>Current learning</h2>
+  <ul class="chips">
+    <li>CUDA</li><li>OpenGL</li><li>NVCC</li><li>AI/ML</li><li>Deep learning</li><li>Computer vision</li>
+  </ul>
+
+  <h2 class="gap">Exams cleared</h2>
+  <ul class="list">
+    <li><span>GATE 2026</span><a class="doc" data-doc="gate2026">Scorecard</a></li>
+    <li><span>UGC-NET Dec 2025</span><a class="doc" data-doc="ugcnet">Certificate</a></li>
+    <li><span>GATE 2025</span><a class="doc" data-doc="gate2025">Scorecard</a></li>
+    <li><span>GATE 2021</span><a class="doc" data-doc="gate2021">Scorecard</a></li>
+    <li><span>GATE 2020</span><a class="doc" data-doc="gate2020">Scorecard</a></li>
+  </ul>
+
+  <h2 class="gap">PSU offers</h2>
+  <ul class="list">
+    <li><span>IPRCL<br><span class="what">Deputy Manager</span></span><a class="doc" data-doc="iprcl_offer">Offer</a></li>
+    <li><span>AIC<br><span class="what">Administrative Officer</span></span><a class="doc" data-doc="aic_offer">Offer</a></li>
+  </ul>
+
+  <h2 class="gap">Internships</h2>
+  <ul class="list">
+    <li><span>Nvidia</span><a class="doc" data-doc="nvidia_offer">Letter</a></li>
+    <li><span>Graymatics</span><a class="doc" data-doc="graymatics_offer">Letter</a></li>
+  </ul>
+
+  <h2 class="gap">Community</h2>
+  <p>I run a job sharing and guidance channel with about 1000+ members, and a YT channel on computer science and tech.</p>
+  <div class="social">
+    <a data-doc="whatsapp" data-optional aria-label="WhatsApp channel">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l1.6-4.6A8.5 8.5 0 1 1 8 19.6L3 21z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-1.8-1.200-2.200-2.200l.8-1-1-2L9 8.500z"/></svg>
+      WhatsApp channel
+    </a>
+    <a data-doc="youtube" data-optional aria-label="YouTube channel">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.500" y="5.500" width="19" height="13" rx="3.500"/><path d="M10 9.200v5.600l5-2.800-5-2.800z"/></svg>
+      YouTube
+    </a>
+  </div>
+</aside>
+
+</div>
+
+<script>
+/* ==========================================================
+   Links
+   ========================================================== */
+const DOCS = {
+  // Profiles and contact
+  cv:               "https://drive.google.com/file/d/1yT7oYhJcJjVyZOWZTX6eUcB_nWEweIny/view?usp=sharing",
+  github:           "https://github.com/ayush550",
+  linkedin:         "https://www.linkedin.com/in/ayush-chauhan-18110817b/",
+  email:            "mailto:2021pcs2028@iitjammu.ac.in",
+
+  // Education
+  mtech_marksheet:  "PASTE_DRIVE_LINK_MTECH_TRANSCRIPT",
+  btech_marksheet:  "PASTE_DRIVE_LINK_BTECH_TRANSCRIPT",
+  class12:          "PASTE_DRIVE_LINK_CLASS12",
+  class10:          "PASTE_DRIVE_LINK_CLASS10",
+  thesis:           "PASTE_DRIVE_LINK_THESIS",
+
+  // Full-time offers
+  amazon_offer:     "PASTE_DRIVE_LINK_AMAZON",
+  qualcomm_offer:   "PASTE_DRIVE_LINK_QUALCOMM",
+  samsung_offer:    "PASTE_DRIVE_LINK_SAMSUNG",
+  infosys_offer:    "PASTE_DRIVE_LINK_INFOSYS",
+  bt_offer:         "PASTE_DRIVE_LINK_BRITISH_TELECOM",
+  vodafone_offer:   "PASTE_DRIVE_LINK_VODAFONE",
+  ntt_offer:        "PASTE_DRIVE_LINK_NTT_DATA",
+
+  // PSU offers
+  aic_offer:        "PASTE_DRIVE_LINK_AIC",
+  iprcl_offer:      "PASTE_DRIVE_LINK_IPRCL",
+
+  // Internships
+  nvidia_offer:     "PASTE_DRIVE_LINK_NVIDIA_INTERNSHIP",
+  graymatics_offer: "PASTE_DRIVE_LINK_GRAYMATICS_INTERNSHIP",
+
+  // Exams
+  gate2020:         "https://drive.google.com/file/d/1u0rljMQk5QfVZJNnSHEoCC_0D533QhDh/view?usp=sharing",
+  gate2021:         "https://drive.google.com/file/d/159jmmo5cmuljNElmAMRa6QiI0Rz78Ufh/view?usp=sharing",
+  gate2025:         "https://drive.google.com/file/d/1Y25LCApF_reshJnD7GgjZh50sc_sfCbC/view?usp=sharing",
+  gate2026:         "https://drive.google.com/file/d/1pXTSn_mOr0wnZicwjgufl59aWWQ5_fg2/view?usp=sharing",
+  ugcnet:           "https://drive.google.com/file/d/1JAVKp7K-6sdUOEHIEgmbGYTKo6BI4WK8/view?usp=sharing",
+
+  // Projects
+  evoting_code:     "PASTE_GITHUB_OR_DRIVE_LINK_EVOTING",
+  adversarial_report:"PASTE_DRIVE_LINK_ADVERSARIAL_REPORT",
+  velocity_code:    "PASTE_GITHUB_OR_DRIVE_LINK_VELOCITY",
+
+  // Community
+  whatsapp:         "PASTE_WHATSAPP_CHANNEL_LINK",
+  youtube:          "PASTE_YOUTUBE_CHANNEL_URL"
+};
+
+/* Night mode toggle */
+(function () {
+  const root = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+  function sync() { btn.setAttribute("aria-checked", root.getAttribute("data-theme") === "dark"); }
+  btn.addEventListener("click", function () {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+
+document.querySelectorAll("[data-doc]").forEach(function (el) {
+  const url = DOCS[el.dataset.doc];
+  if (url && !url.startsWith("PASTE_")) {
+    el.href = url;
+    if (!url.startsWith("mailto:")) { el.target = "_blank"; el.rel = "noopener noreferrer"; }
+  } else if (el.hasAttribute("data-optional")) {
+    // el.style.display = "none";
+  } else {
+    el.classList.remove("doc");
+    el.removeAttribute("href");
+    el.style.textDecoration = "none";
+  }
+});
+</script>
 </body>
-
 </html>
