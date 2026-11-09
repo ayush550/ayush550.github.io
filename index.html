@@ -73,7 +73,7 @@ main h2{font-size:1.35rem;margin-bottom:14px}
 .chips li:has(a):hover a{color:var(--bg)}
 
 /* Credential links */
-.doc::after{content:" (verify)";color:var(--muted);font-size:.82em;white-space:nowrap}
+.doc::after{content:"";color:var(--muted);font-size:.82em;white-space:nowrap}
 .chips .doc::after{content:""}
 .list{list-style:none;margin:0;padding:0}
 .list li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.98rem}
@@ -217,7 +217,8 @@ main h2{font-size:1.35rem;margin-bottom:14px}
     <div class="block">
       <h3>Class XII and Class X</h3>
       <p class="meta">XII: 82.40%. X: CGPA 8.6</p>
-      <p><a class="doc" data-doc="class12">Class XII marksheet</a> <a class="doc" data-doc="class10">Class X marksheet</a></p>
+      <p><a class="doc" data-doc="class12">Class XII with PCM</a><br> 
+        <a class="doc" data-doc="class10">Class X with Science, English, Math, Social Science, Hindi</a></p>
     </div>
   </section>
 
@@ -228,9 +229,9 @@ main h2{font-size:1.35rem;margin-bottom:14px}
       <a data-doc="qualcomm_offer"><strong>Qualcomm</strong><span>Engineer</span></a>
       <a data-doc="samsung_offer"><strong>Samsung R&amp;D Noida</strong><span>Engineer</span></a>
       <a data-doc="infosys_offer"><strong>Infosys</strong><span>Systems Engineer</span></a>
-      <a data-doc="bt_offer"><strong>British Telecom</strong><span>Verify offer</span></a>
-      <a data-doc="vodafone_offer"><strong>Vodafone</strong><span>Verify offer</span></a>
-      <a data-doc="ntt_offer"><strong>NTT Data</strong><span>Verify offer</span></a>
+      <a data-doc="bt_offer"><strong>British Telecom</strong><span>Network Engineer</span></a>
+      <a data-doc="vodafone_offer"><strong>Vodafone</strong><span>Software Engineer</span></a>
+      <a data-doc="ntt_offer"><strong>NTT Data</strong><span>Software Engineer</span></a>
     </div>
   </section>
 </main>
@@ -295,31 +296,31 @@ const DOCS = {
   btech_marksheet:  "PASTE_DRIVE_LINK_BTECH_TRANSCRIPT",
   class12:          "PASTE_DRIVE_LINK_CLASS12",
   class10:          "PASTE_DRIVE_LINK_CLASS10",
-  thesis:           "PASTE_DRIVE_LINK_THESIS",
+  thesis:           "https://drive.google.com/file/d/11VOM5z3WTvDibTfkogxefrW4CCTQQYt0/view?usp=sharing",
 
   // Full-time offers
-  amazon_offer:     "PASTE_DRIVE_LINK_AMAZON",
+  amazon_offer:     "https://drive.google.com/file/d/16uMeBpoYy2fBLrhKL5202Pt_LDMMttgH/view?usp=drive_link",
   qualcomm_offer:   "PASTE_DRIVE_LINK_QUALCOMM",
-  samsung_offer:    "PASTE_DRIVE_LINK_SAMSUNG",
-  infosys_offer:    "PASTE_DRIVE_LINK_INFOSYS",
-  bt_offer:         "PASTE_DRIVE_LINK_BRITISH_TELECOM",
-  vodafone_offer:   "PASTE_DRIVE_LINK_VODAFONE",
+  samsung_offer:    "https://drive.google.com/file/d/1hheg3bInZlWM-5xeeOPsiQRBY_ALB3mK/view?usp=drive_link",
+  infosys_offer:    "https://drive.google.com/file/d/11-FEfe7HxQBo-E-kIrPSSxkFR2R0nMqj/view?usp=drive_link",
+  bt_offer:         "https://drive.google.com/file/d/1sQBB4dz2tJLFQfImHZ5DBt5DWcuLqNt4/view?usp=drive_link",
+  vodafone_offer:   "https://drive.google.com/file/d/11TCraX7H4DTUO0rCYl2DzhB-I1E9iRmE/view?usp=sharing",
   ntt_offer:        "PASTE_DRIVE_LINK_NTT_DATA",
 
   // PSU offers
-  aic_offer:        "PASTE_DRIVE_LINK_AIC",
-  iprcl_offer:      "PASTE_DRIVE_LINK_IPRCL",
+  aic_offer:        "https://drive.google.com/file/d/1cWqsBAnajTN1_zYfPan8SX-sR2Ns8l0N/view?usp=drive_link",
+  iprcl_offer:      "https://drive.google.com/file/d/1BvD3Lu3rrxEMfSzUi-Z0doX1knQePFgr/view?usp=sharing",
 
   // Internships
-  nvidia_offer:     "PASTE_DRIVE_LINK_NVIDIA_INTERNSHIP",
-  graymatics_offer: "PASTE_DRIVE_LINK_GRAYMATICS_INTERNSHIP",
+  nvidia_offer:     "https://drive.google.com/file/d/1Mp5wC4IoO2npCndIVUVAEvijc-rx8McD/view?usp=drive_link",
+  graymatics_offer: "https://drive.google.com/file/d/18vO4swTBq7y5ds9bnTy2eWbiHdjYwv0T/view?usp=drive_link",
 
   // Exams
-  gate2020:         "https://drive.google.com/file/d/1u0rljMQk5QfVZJNnSHEoCC_0D533QhDh/view?usp=sharing",
-  gate2021:         "https://drive.google.com/file/d/159jmmo5cmuljNElmAMRa6QiI0Rz78Ufh/view?usp=sharing",
-  gate2025:         "https://drive.google.com/file/d/1Y25LCApF_reshJnD7GgjZh50sc_sfCbC/view?usp=sharing",
-  gate2026:         "https://drive.google.com/file/d/1pXTSn_mOr0wnZicwjgufl59aWWQ5_fg2/view?usp=sharing",
-  ugcnet:           "https://drive.google.com/file/d/1JAVKp7K-6sdUOEHIEgmbGYTKo6BI4WK8/view?usp=sharing",
+  gate2020:         "PASTE_DRIVE_LINK_NTT_DATA",
+  gate2021:         "https://drive.google.com/file/d/1MNFNbDMm8wtwxspmztxmrDYMKuMgKzfz/view?usp=drive_link",
+  gate2025:         "https://drive.google.com/file/d/1-6zTRcceX7B8T9RBt0c0F70h7HZNiOnN/view?usp=drive_link",
+  gate2026:         "https://drive.google.com/file/d/1xi7Xk_PJGBSUKAApnGS33THbuaz6fglN/view?usp=drive_link",
+  ugcnet:           "https://drive.google.com/file/d/1jy071kOfcrIkZh4ECN071GBg7_0zgdi_/view?usp=drive_link",
 
   // Projects
   evoting_code:     "PASTE_GITHUB_OR_DRIVE_LINK_EVOTING",
@@ -327,8 +328,8 @@ const DOCS = {
   velocity_code:    "PASTE_GITHUB_OR_DRIVE_LINK_VELOCITY",
 
   // Community
-  whatsapp:         "PASTE_WHATSAPP_CHANNEL_LINK",
-  youtube:          "PASTE_YOUTUBE_CHANNEL_URL"
+  whatsapp:         "https://whatsapp.com/channel/0029VbATzl47dmeQsn8ZSg3L",
+  youtube:          "https://www.youtube.com/@cs_with_ac"
 };
 
 /* Night mode toggle */
